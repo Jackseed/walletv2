@@ -1,0 +1,7 @@
+<p>
+  mnemonic works!
+</p>
+
+<span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
+
+<button (click)="update()"></button>
