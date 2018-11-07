@@ -3,6 +3,7 @@ import { WalletQuery } from '../../+state';
 import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
 
+
 @Component({
   selector: 'app-mnemonic',
   templateUrl: './mnemonic.component.html',
@@ -22,8 +23,11 @@ export class MnemonicComponent implements OnInit {
     this.mnemonic$ = this.query.mnemonic$;
   }
 
-  public update() {
-    this.service.setMnemonic('hello hello');
+  public updateMnemonic() {
+    this.service.setMnemonic(this.generateRandomMnemonic());
+  }
+  public generateRandomMnemonic() {
+    return this.service.generateRandomMnemonic();
   }
 
 }

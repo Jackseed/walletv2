@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WalletStore } from './wallet.store';
-
+import { ethers } from 'ethers';
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
@@ -13,4 +13,7 @@ export class WalletService {
    this.store.update({ mnemonic });
   }
 
+  generateRandomMnemonic() {
+    return ethers.Wallet.createRandom().mnemonic;
+  }
 }
