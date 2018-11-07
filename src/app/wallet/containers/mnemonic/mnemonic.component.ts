@@ -22,12 +22,13 @@ export class MnemonicComponent implements OnInit {
   ngOnInit() {
     this.mnemonic$ = this.query.mnemonic$;
   }
+  public generateRandomMnemonic() {
+    return this.service.generateRandomMnemonic();
+  }
 
   public updateMnemonic() {
     this.service.setMnemonic(this.generateRandomMnemonic());
   }
-  public generateRandomMnemonic() {
-    return this.service.generateRandomMnemonic();
-  }
+
 
 }

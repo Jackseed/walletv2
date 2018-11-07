@@ -7,6 +7,7 @@ import { VerificationComponent } from './wallet/containers/verification/verifica
 import { WalletModule } from './wallet/wallet.module';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     WalletModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

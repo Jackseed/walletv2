@@ -13,4 +13,12 @@ export class WalletQuery extends Query<WalletState> {
     return this.select( (state) => state.mnemonic.split(''));
   }
 
+  get wallet$ () {
+    return this.select( (state) => state.wallet);
+  }
+
+  get address$ () {
+    return this.select( (state) => state.address);
+  }
+
 }

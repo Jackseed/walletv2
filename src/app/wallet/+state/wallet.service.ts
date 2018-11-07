@@ -5,8 +5,7 @@ import { ethers } from 'ethers';
 @Injectable({ providedIn: 'root' })
 export class WalletService {
 
-  constructor(private store: WalletStore,
-              ) {
+  constructor(private store: WalletStore) {
   }
 
   setMnemonic(mnemonic: string) {
@@ -16,4 +15,20 @@ export class WalletService {
   generateRandomMnemonic() {
     return ethers.Wallet.createRandom().mnemonic;
   }
+
+  createMnemonicWallet(mnemonic: string) {
+    return ethers.Wallet.fromMnemonic(mnemonic);
+  }
+
+  setWallet(wallet: ethers.Wallet) {
+    this.store.update({ wallet });
+  }
+
+  getAddress(wallet: ethers.Wallet) {
+    return wallet.address;
+  }
+
+  setWalletAddress(address: string) {
+    this.store.update({ address });
+   }
 }
