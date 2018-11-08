@@ -1,6 +1,16 @@
 <p>
   wallet section:
 </p>
-<button (click)="updateWallet()">create wallet</button>
 
-<br><button (click)="updateAddress()">update address</button>
+
+<button (click)="createMnemonicWallet()">create wallet</button>
+
+<br> Your address is: {{ address$ | async }}
+
+<div>
+  <p>What password would you like?</p>
+  <form (ngSubmit)="generateKeystore(pwd.value)">
+    <input #pwd> 
+    <input type="submit">
+  </form>
+</div> 

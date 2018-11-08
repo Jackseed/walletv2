@@ -9,16 +9,28 @@ export class WalletQuery extends Query<WalletState> {
     super(store);
   }
 
-  get mnemonic$ () {
-    return this.select( (state) => state.mnemonic.split(''));
-  }
-
-  get wallet$ () {
-    return this.select( (state) => state.wallet);
-  }
-
   get address$ () {
     return this.select( (state) => state.address);
   }
 
+  get address() {
+    return this.getSnapshot().address;
+  }
+
+  get keystore$ () {
+    return this.select( (state) => state.keystore);
+  }
+
+  get keystore() {
+    return this.getSnapshot().keystore;
+  }
+
+  get mnemonic$ () {
+    return this.select( (state) => state.mnemonic.split(''));
+  }
+
+  get mnemonic() {
+    return this.getSnapshot().mnemonic;
+  }
+ 
 }

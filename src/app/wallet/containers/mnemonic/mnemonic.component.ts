@@ -13,7 +13,6 @@ export class MnemonicComponent implements OnInit {
 
   public mnemonic$: Observable<string[]>;
 
-
   constructor(
     private query: WalletQuery,
     private service: WalletService

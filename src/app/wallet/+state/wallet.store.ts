@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { ethers } from 'ethers';
 
 
 export interface WalletState {
-  mnemonic: string;
-  wallet: ethers.Wallet;
   address: string;
+  keystore: string;
+  mnemonic: string;
 }
 
 export function createInitialState(): WalletState {
   return {
-    mnemonic: 'salut c\'est cool',
-    wallet: null,
-    address: 'première adresse',
+    address: 'yet to be created...',
+    keystore: '',
+    mnemonic: ''
   };
 }
 

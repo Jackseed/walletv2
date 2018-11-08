@@ -4,31 +4,28 @@ import { ethers } from 'ethers';
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
+  private wallet: ethers.Wallet;
 
   constructor(private store: WalletStore) {
   }
 
-  setMnemonic(mnemonic: string) {
+  public setMnemonic(mnemonic: string) {
    this.store.update({ mnemonic });
   }
 
-  generateRandomMnemonic() {
+  public generateRandomMnemonic() {
     return ethers.Wallet.createRandom().mnemonic;
   }
 
-  createMnemonicWallet(mnemonic: string) {
-    return ethers.Wallet.fromMnemonic(mnemonic);
+  public createMnemonicWallet(mnemonic: string) {
+    this.wallet = ethers.Wallet.fromMnemonic(mnemonic);
+    this.store.update({ address: this.wallet.address });
+    this.setMnemonic('');
   }
 
-  setWallet(wallet: ethers.Wallet) {
-    this.store.update({ wallet });
+  public async generateKeystore(password: string) {
+    const keystore = await this.wallet.encrypt(password);
+    this.store.update({ keystore });
   }
 
-  getAddress(wallet: ethers.Wallet) {
-    return wallet.address;
-  }
-
-  setWalletAddress(address: string) {
-    this.store.update({ address });
-   }
 }
