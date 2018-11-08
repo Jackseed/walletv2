@@ -26,6 +26,7 @@ export class WalletService {
   public async generateKeystore(password: string) {
     const keystore = await this.wallet.encrypt(password);
     this.store.update({ keystore });
+    localStorage.setItem('keystore', keystore);
   }
 
 }
