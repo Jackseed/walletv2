@@ -5,6 +5,7 @@ import { ethers } from 'ethers';
 @Injectable({ providedIn: 'root' })
 export class WalletService {
   private wallet: ethers.Wallet;
+  private localKeystore: string;
 
   constructor(private store: WalletStore) {
   }
@@ -23,10 +24,21 @@ export class WalletService {
     this.setMnemonic('');
   }
 
+  public setKeystore(keystore: string) {
+    this.store.update({ keystore});
+  }
+
   public async generateKeystore(password: string) {
     const keystore = await this.wallet.encrypt(password);
-    this.store.update({ keystore });
+    this.setKeystore(keystore);
     localStorage.setItem('keystore', keystore);
+  }
+
+  public pushLocalKeystoreToStore() {
+    this.localKeystore = localStorage.getItem('keystore');
+    if (this.localKeystore) {
+      this.setKeystore(this.localKeystore);
+    }
   }
 
 }

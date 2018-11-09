@@ -19,6 +19,7 @@ export class WalletComponent implements OnInit {
 
   ngOnInit() {
     this.address$ = this.query.address$;
+    this.service.pushLocalKeystoreToStore();
   }
 
   public createMnemonicWallet() {
