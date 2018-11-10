@@ -10,24 +10,9 @@ import { WalletService } from '../../+state';
 })
 export class WalletComponent implements OnInit {
 
-  public address$: Observable<string>;
 
-  constructor(
-    private query: WalletQuery,
-    private service: WalletService
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.address$ = this.query.address$;
-    this.service.pushLocalKeystoreToStore();
-  }
-
-  public createMnemonicWallet() {
-    return this.service.createMnemonicWallet(this.query.mnemonic);
-  }
-
-  public generateKeystore(pwd: string) {
-    this.service.generateKeystore(pwd);
-  }
+  ngOnInit() {}
 
 }

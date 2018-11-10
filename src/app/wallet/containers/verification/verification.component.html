@@ -1,35 +1,22 @@
-<form>
-  <div fxLayout="row" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
-      <div *ngFor="let mnemonic of mnemonics" fxFlex= "32%">
-  
-          <h3>N°{{mnemonic.id}}</h3>
-          <p>
-            <mat-form-field appearance="fill" style="width:100%">
-                <mat-label>{{mnemonic.name}}</mat-label>           
-                <input matInput #{{mnemonic.input_id}}>
-            </mat-form-field>
-          </p>
-      
-      </div>
-    
-  </div>
+<p>verification section</p>
 
+<form (ngSubmit)='decryptKeystore(pwd.value)'>
 
-  <div fxLayout="row" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
+  <div fxLayout='row' fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
 
     <div fxFlex="90%">
       <p>          
         <mat-form-field appearance="fill" style="width:50%">
           <mat-label>Password</mat-label>
-          <input matInput #password>
+          <input matInput #pwd>
         </mat-form-field>
       </p>   
     </div>
 
     <div fxFlex="10%" fxFlexAlign="center" dir="rtl">
-      <button mat-raised-button (click)="submit(mnemonic.value)" color="primary">submit</button>
+      <button mat-raised-button type='submit' color="primary">submit</button>
     </div>
 
   </div>
-  
 </form>
+

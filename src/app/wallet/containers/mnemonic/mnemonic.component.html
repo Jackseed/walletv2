@@ -3,3 +3,15 @@
 <span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
 
 <br><button (click)="updateMnemonic()">new mnemos</button>
+
+<button (click)="createMnemonicWallet()">create wallet</button>
+
+<br> Your address is: {{ address$ | async }}
+
+<div>
+  <p>What password would you like?</p>
+  <form (ngSubmit)="generateKeystore(pwd.value)">
+    <input #pwd> 
+    <input type="submit">
+  </form>
+</div> 
