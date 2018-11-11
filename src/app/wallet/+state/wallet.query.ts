@@ -32,5 +32,4 @@ export class WalletQuery extends Query<WalletState> {
   get mnemonic() {
     return this.getSnapshot().mnemonic;
   }
- 
 }

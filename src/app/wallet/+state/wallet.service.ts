@@ -50,9 +50,11 @@ export class WalletService {
     this.wallet = await ethers.Wallet.fromEncryptedJson(keystore, password);
     if (this.wallet) {
       this.setAddress();
+      this.setMnemonic(this.wallet.mnemonic);
     } else {
       console.log('error: not the good password');
     }
   }
+
 
 }
