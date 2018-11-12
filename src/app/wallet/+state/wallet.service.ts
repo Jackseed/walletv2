@@ -37,6 +37,7 @@ export class WalletService {
     const keystore = await this.wallet.encrypt(password);
     this.setKeystore(keystore);
     localStorage.setItem('keystore', keystore);
+    console.log('keystore created and stored.')
   }
 
   public pushLocalKeystoreToStore() {
@@ -55,6 +56,4 @@ export class WalletService {
       console.log('error: not the good password');
     }
   }
-
-
 }

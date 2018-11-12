@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WalletQuery } from '../../+state';
 import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verification',
@@ -15,7 +16,8 @@ export class VerificationComponent implements OnInit {
 
   constructor(
     private query: WalletQuery,
-    private service: WalletService
+    private service: WalletService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,8 +34,8 @@ export class VerificationComponent implements OnInit {
     this.mnemonicIDs = [];
     for (let i = 0; i < x; i++) {
       let rand: number = null;
-      while (rand === null || this.mnemonicIDs.includes(rand) || rand === 13) {
-        rand = Math.round(Math.random() * 13);
+      while (rand === null || this.mnemonicIDs.includes(rand) || rand === 0) {
+        rand = Math.round(Math.random() * 12);
       }
       this.mnemonicIDs.push(rand);
     }
@@ -42,7 +44,18 @@ export class VerificationComponent implements OnInit {
   public passwordAndMnemonicsVerification(password: string, mnemonic1: string, mnemonic2: string, mnemonic3: string) {
     this.decryptKeystore(password);
     if (this.query.mnemonic !== '') {
-      
+      const mnemonics = this.query.mnemonic.split(' ');
+      if (mnemonic1 === mnemonics[this.mnemonicIDs[0] - 1]) {
+        if (mnemonic2 === mnemonics[this.mnemonicIDs[1] - 1]) {
+          if (mnemonic3 === mnemonics[this.mnemonicIDs[2] - 1]) {
+            this.router.navigate(['/wallet']);
+          }
+        }
+      } else {
+        console.log('One or more of your mnemonics is false.');
+      }
+    } else {
+      console.log('Your password is incorrect.');
     }
   }
 
