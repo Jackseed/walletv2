@@ -12,7 +12,7 @@ export interface WalletState {
 
 export function createInitialState(): WalletState {
   return {
-    address: 'yet to be created...',
+    address: '',
     keystore: '',
     mnemonic: '',
     balance: ''
