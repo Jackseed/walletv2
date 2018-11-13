@@ -6,6 +6,7 @@ import { ethers } from 'ethers';
 export class WalletService {
   private wallet: ethers.Wallet;
   private localKeystore: string;
+  private provider = new ethers.providers.InfuraProvider('kovan', 'bb4ddbd3692045d7a8a56af74736001e');
 
   constructor(private store: WalletStore) {
   }
@@ -22,10 +23,10 @@ export class WalletService {
     this.store.update({ address : this.wallet.address });
   }
 
-
   public createMnemonicWallet(mnemonic: string) {
     this.wallet = ethers.Wallet.fromMnemonic(mnemonic);
     this.setAddress();
+    this.setBalance();
     this.setMnemonic('');
   }
 
@@ -37,7 +38,7 @@ export class WalletService {
     const keystore = await this.wallet.encrypt(password);
     this.setKeystore(keystore);
     localStorage.setItem('keystore', keystore);
-    console.log('keystore created and stored.')
+    console.log('keystore created and stored.');
   }
 
   public pushLocalKeystoreToStore() {
@@ -51,9 +52,17 @@ export class WalletService {
     this.wallet = await ethers.Wallet.fromEncryptedJson(keystore, password);
     if (this.wallet) {
       this.setAddress();
+      this.setBalance();
       this.setMnemonic(this.wallet.mnemonic);
     } else {
       console.log('error: not the good password');
     }
+  }
+
+  public setBalance() {
+    this.provider.getBalance(this.wallet.address).then((balance) => {
+      this.store.update({ balance : ethers.utils.formatEther(balance) });
+      }
+    );
   }
 }

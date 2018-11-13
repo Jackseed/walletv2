@@ -32,4 +32,13 @@ export class WalletQuery extends Query<WalletState> {
   get mnemonic() {
     return this.getSnapshot().mnemonic;
   }
+
+  get balance$ () {
+    return this.select( (state) => state.balance );
+  }
+
+  get balance() {
+    return this.getSnapshot().balance;
+  }
+
 }
