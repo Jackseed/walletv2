@@ -1,0 +1,30 @@
+<div class="text-align-center">
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex= "100%">    
+        <h2 class="extra-padding-top">Welcome!</h2>
+        <p>Would you like to:</p>
+    </div>
+  </div>
+  
+  <div fxLayout.gt-sm="row" fxLayout="column" class="extra-padding-top">
+      
+      <div fxFlex.gt-sm= "20%" fxFlex="100%" fxFlexOffset.gt-sm="20%" fxFlexOffset="0%">
+        <a routerLink="/mnemonic">
+          <mat-card class="card">            
+            <mat-card-title>CREATE</mat-card-title>
+            <mat-card-subtitle>a wallet</mat-card-subtitle>
+          </mat-card>        
+        </a>
+      </div>
+
+      <div fxFlex.gt-sm= "20" fxFlex="100%" fxFlexOffset.gt-sm="20%" fxFlexOffset="0%">
+        <a routerLink="/verification">
+          <mat-card class="card">            
+            <mat-card-title>CONNECT</mat-card-title>
+            <mat-card-subtitle>to your wallet</mat-card-subtitle>
+          </mat-card>        
+        </a>
+      </div>
+      
+  </div>
+</div>

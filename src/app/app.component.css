@@ -9,36 +9,37 @@ body {
 
 h1 {
     font-size: 250%;
-    margin-bottom: 0;
-    text-align: center;
+    margin-left: 1em;
     margin-top: 0.2em;
     margin-bottom: 0em;
   }
- 
-h2 {
+
+  h3 {
     margin: 0em;
-    font-size: 150%;
+    font-size: 125%;
     margin-bottom: 0;
-    text-align: center;
+    margin-left: 2em;
     font-weight: lighter;
-
   }
 
-  nav a {
-    padding: 5px 10px;
+  a {
     text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-    background-color: #eee;
-    border-radius: 4px;
   }
-  nav a:visited, a:link {
-    color: #607d8b;
+
+  a:link {
+    color: black;
   }
-  nav a:hover {
-    color: #039be5;
-    background-color: #cfd8dc;
-  }
-  nav a.active {
-    color: #039be5;
-  }
+  a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+/* selected link */
+a:active {
+    color: black;
+}
+

@@ -5,13 +5,16 @@ import { WalletComponent } from './containers/wallet/wallet.component';
 import { TransactionComponent } from './containers/transaction/transaction.component';
 import { VerificationComponent } from './containers/verification/verification.component';
 import { UiModule } from '../ui/ui.module';
+import { HomeComponent } from './containers/home/home.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  declarations: [MnemonicComponent, WalletComponent, TransactionComponent, VerificationComponent],
-  exports: [MnemonicComponent, WalletComponent, TransactionComponent, VerificationComponent],
+  declarations: [MnemonicComponent, WalletComponent, TransactionComponent, VerificationComponent, HomeComponent],
+  exports: [MnemonicComponent, WalletComponent, TransactionComponent, VerificationComponent, HomeComponent],
   imports: [
     CommonModule,
-    UiModule
+    UiModule,
+    AppRoutingModule
   ]
 })
 

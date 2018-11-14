@@ -1,4 +1,17 @@
-h3 {
+
+
+  h2 {
+    margin: 0em;
+    font-size: 200%;
+    margin-bottom: 0;
+    font-weight: lighter;
+  }
+  
+  .mini-padding-top {
+    padding-top: 1em;
+  }
+
+  .text-align-center {
     text-align: center;
   }
 
