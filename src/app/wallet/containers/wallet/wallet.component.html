@@ -1,5 +1,10 @@
 <p>
   wallet section:
 </p>
+<p>You are connected to this address: {{ address$ | async }}</p> 
 
-<p></p> 
+<p>Your balance is: {{ balance$ | async }}</p> 
+
+<button mat-raised-button color="primary" (click)="updateBalance()">refresh</button>
+
+<app-transaction></app-transaction>

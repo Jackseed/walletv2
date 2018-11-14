@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletQuery } from '../../+state';
-import { WalletService } from '../../+state';
+import { WalletQuery, WalletService } from '../../+state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-wallet',
@@ -9,12 +9,26 @@ import { WalletService } from '../../+state';
 })
 export class WalletComponent implements OnInit {
 
+  public balance$: Observable<string>;
+  public address$: Observable<string>;
 
   constructor(
     private query: WalletQuery,
     private service: WalletService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.balance$ = this.query.balance$;
+    this.address$ = this.query.address$;
+    if (this.query.address !== '') {
+      this.service.setBalance();
+    }
+  }
+
+  public updateBalance() {
+    if (this.query.address !== '') {
+      this.service.setBalance();
+    }
+  }
 
 }

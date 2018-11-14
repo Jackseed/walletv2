@@ -1,3 +1,58 @@
 <p>
-  transaction works!
+  transaction section
 </p>
+<form (ngSubmit)='sendTransaction(recipientAddress.value, amount.value, gaslimit.value, gasFee.value)'>
+
+  <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
+
+    <div fxFlex>
+        <h3>From: {{ address$ | async }}</h3>
+    </div>       
+
+    <div fxFlex>
+      <h3>To:</h3>          
+      <p>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label>Recipient Address</mat-label>           
+            <input matInput #recipientAddress>
+        </mat-form-field>
+      </p>
+    </div> 
+    
+    <div fxFlex>
+        <h3>Amount:</h3>          
+        <p>
+          <mat-form-field appearance="fill" style="width:100%">
+              <mat-label>ETH</mat-label>           
+              <input matInput #amount>
+          </mat-form-field>
+        </p>
+    </div> 
+
+    <div fxFlex>
+      <h3>Gas limit:</h3>          
+      <p>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label></mat-label>           
+            <input matInput #gaslimit>
+        </mat-form-field>
+      </p>
+  </div>   
+
+    <div fxFlex>
+        <h3>Gas Fee:</h3>          
+        <p>
+          <mat-form-field appearance="fill" style="width:100%">
+              <mat-label>ETH</mat-label>           
+              <input type='number' matInput #gasFee>
+          </mat-form-field>
+        </p>
+    </div>  
+
+    <div fxFlex>
+       <button mat-raised-button type='submit' color="primary">Send</button>
+    </div>
+
+  </div>   
+
+</form>

@@ -8,8 +8,9 @@ export class WalletService {
   private localKeystore: string;
   private provider = new ethers.providers.InfuraProvider('kovan', 'bb4ddbd3692045d7a8a56af74736001e');
 
-  constructor(private store: WalletStore) {
-  }
+  constructor(
+    private store: WalletStore
+  ) {}
 
   public setMnemonic(mnemonic: string) {
    this.store.update({ mnemonic });
@@ -64,5 +65,16 @@ export class WalletService {
       this.store.update({ balance : ethers.utils.formatEther(balance) });
       }
     );
+  }
+
+  public signTransaction(transaction: ethers.providers.TransactionRequest) {
+    const signPromise = this.wallet.sign(transaction);
+
+    signPromise.then((signedTransaction) => {
+      this.provider.sendTransaction(signedTransaction).then((tx) => {
+
+        console.log(tx);
+      });
+    });
   }
 }
