@@ -4,18 +4,70 @@
       <p>This is just the beginning</p>
   </div>
 </div>
-<span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
 
-<br><button (click)="updateMnemonic()">new mnemos</button>
+<mat-vertical-stepper linear>
+  <mat-step [editable]="editable">
+      <ng-template matStepLabel>Choose your mnemonics</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <div fxFlex fxFlexAlign="center">    
+          <span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
+        </div>
+        <div fxFlex fxFlexAlign="center" class="mini-padding-top">  
+          <br><button mat-raised-button color="accent" (click)="updateMnemonic()">Random</button>
+        </div>
+      </div>
+      <div class="text-align-right">
+          <button mat-icon-button color="primary" [disabled]="!mnemonicsChosen" (click)="editable=!editable" matStepperNext>
+              <mat-icon aria-label="save">save</mat-icon>
+          </button>
+      </div>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Create your wallet</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <div fxFlex fxFlexAlign="center" class="mini-padding-top">
+          <button mat-raised-button color="accent" (click)="createMnemonicWallet()">Create your wallet</button>
+        </div>
+        <div fxFlex fxFlexAlign="center" class="mini-padding-top text-align-center" [hidden]="!walletCreated">
+          <h3>Congratz!</h3>
+          <br><p>Your address is:</p>
+          <br><h3>{{ address$ | async }}</h3>
+        </div>
+      </div>
+      <div class="text-align-right">
+          <button mat-icon-button color="primary" [disabled]="!walletCreated" (click)="editable=!editable" matStepperNext>
+              <mat-icon aria-label="save">save</mat-icon>
+          </button>
+      </div>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Encrypt your wallet</ng-template>
+      <div fxLayout="row" fxLayoutAlign="center" class="mini-padding-top text-align-center">
+        <div fxFlex="100%">    
+          <p>Last but not least, encrypt your wallet.</p>
+          <p class="no-padding">What password would you like?</p>
+        </div>
+      </div>
+      <form (ngSubmit)="generateKeystore(pwd.value)">
+        <div fxLayout="row" fxLayoutAlign="center" class="mini-padding-top text-align-center">        
+          <div fxFlex="100%" fxFlexAlign="center"> 
+            <mat-form-field appearance="fill" style="width:50%">
+              <mat-label>Password</mat-label>
+              <input matInput #pwd>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" class="mini-padding-top text-align-center">
+          <div fxFlex="100%" fxFlexAlign="center">
+            <button mat-raised-button color="primary" type="submit">Validate</button>
+          </div> 
+        </div>
+     </form>
+ 
+  </mat-step>
+</mat-vertical-stepper>
 
-<button (click)="createMnemonicWallet()">create wallet</button>
 
-<br> Your address is: {{ address$ | async }}
 
-<div>
-  <p>What password would you like?</p>
-  <form (ngSubmit)="generateKeystore(pwd.value)">
-    <input #pwd> 
-    <input type="submit">
-  </form>
-</div> 
+
+

@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 @NgModule({
   declarations: [],
@@ -17,7 +20,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     FlexLayoutModule,
     CommonModule,
     MatCardModule,
-    MatStepperModule],
+    MatStepperModule,
+    MatIconModule],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -25,6 +29,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     FormsModule,
     FlexLayoutModule,
     MatCardModule,
-    MatStepperModule],
+    MatStepperModule,
+    MatIconModule],
 })
 export class UiModule { }

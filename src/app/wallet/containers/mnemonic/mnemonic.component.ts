@@ -13,6 +13,9 @@ export class MnemonicComponent implements OnInit {
 
   public mnemonic$: Observable<string[]>;
   public address$: Observable<string>;
+  public mnemonicsChosen: boolean;
+  public editable: boolean;
+  public walletCreated: boolean;
 
   constructor(
     private query: WalletQuery,
@@ -23,6 +26,9 @@ export class MnemonicComponent implements OnInit {
     this.mnemonic$ = this.query.mnemonic$;
     this.address$ = this.query.address$;
     this.service.pushLocalKeystoreToStore();
+    this.mnemonicsChosen = false;
+    this.editable = true;
+    this.walletCreated = false;
   }
   public generateRandomMnemonic() {
     return this.service.generateRandomMnemonic();
@@ -30,15 +36,16 @@ export class MnemonicComponent implements OnInit {
 
   public updateMnemonic() {
     this.service.setMnemonic(this.generateRandomMnemonic());
+    this.mnemonicsChosen = true;
   }
 
   public createMnemonicWallet() {
+    this.walletCreated = true;
     return this.service.createMnemonicWallet(this.query.mnemonic);
   }
 
   public generateKeystore(password: string) {
     this.service.generateKeystore(password);
   }
-
 
 }
