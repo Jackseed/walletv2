@@ -1,5 +1,9 @@
-<p>mnemonic section:</p>
-
+<div fxLayout="row" fxLayoutAlign="start" class="text-align-center">
+  <div fxFlex= "100%">    
+      <h2 class="mini-padding-top">Creation</h2>
+      <p>This is just the beginning</p>
+  </div>
+</div>
 <span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
 
 <br><button (click)="updateMnemonic()">new mnemos</button>

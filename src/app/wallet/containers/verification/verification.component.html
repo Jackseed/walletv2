@@ -1,67 +1,55 @@
 <div class="text-align-center">
-    <div fxLayout="row" fxLayoutAlign="start">
-      <div fxFlex= "100%">    
-          <h2 class="mini-padding-top">Welcome!</h2>
-          <p>Would you like to:</p>
-      </div>
-</div>
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex= "100%">    
+        <h2 class="mini-padding-top">Connexion</h2>
+        <p>Please enter your private information</p>
+    </div>
+  </div>
 
-<form (ngSubmit)='passwordAndMnemonicsVerification(pwd.value, mnemonic0.value, mnemonic1.value, mnemonic2.value)'>
+  <form (ngSubmit)='passwordAndMnemonicsVerification(pwd.value, mnemonic0.value, mnemonic1.value, mnemonic2.value)'>
 
-    <div fxLayout="row" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
-        <div fxFlex= "32%">
-    
-            <h3>N°{{mnemonicIDs[0]}}</h3>
-            <p>
-              <mat-form-field appearance="fill" style="width:100%">
-                  <mat-label>Mnemonic n°{{mnemonicIDs[0]}}</mat-label>           
-                  <input matInput #mnemonic0>
-              </mat-form-field>
-            </p>
-        
-        </div>
+    <div fxLayout="row" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="3%">
 
-        <div fxFlex= "32%">
-    
-          <h3>N°{{mnemonicIDs[1]}}</h3>
-          <p>
-            <mat-form-field appearance="fill" style="width:100%">
-                <mat-label>Mnemonic n°{{mnemonicIDs[1]}}</mat-label>           
-                <input matInput #mnemonic1>
-            </mat-form-field>
-          </p>
-      
+      <div fxFlex= "32%">    
+        <h3>N°{{mnemonicIDs[0]}}</h3>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label>Mnemonic n°{{mnemonicIDs[0]}}</mat-label>           
+            <input matInput #mnemonic0>
+        </mat-form-field>      
       </div>
 
-      <div fxFlex= "32%">
-    
+      <div fxFlex= "32%">    
+        <h3>N°{{mnemonicIDs[1]}}</h3>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label>Mnemonic n°{{mnemonicIDs[1]}}</mat-label>           
+            <input matInput #mnemonic1>
+        </mat-form-field>      
+      </div>
+
+      <div fxFlex= "32%">    
         <h3>N°{{mnemonicIDs[2]}}</h3>
-        <p>
-          <mat-form-field appearance="fill" style="width:100%">
-              <mat-label>Mnemonic n°{{mnemonicIDs[2]}}</mat-label>           
-              <input matInput #mnemonic2>
-          </mat-form-field>
-        </p>
-    
-    </div>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label>Mnemonic n°{{mnemonicIDs[2]}}</mat-label>           
+            <input matInput #mnemonic2>
+        </mat-form-field>
+      </div>
       
     </div>
 
-  <div fxLayout='row' fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
+    <div fxLayout='row' fxLayoutAlign="start" fxLayoutGap="1%" class="mini-padding-top">
 
-    <div fxFlex="90%">
-      <p>          
+      <div fxFlex="90%" fxFlexAlign="start" class="text-align-left">       
         <mat-form-field appearance="fill" style="width:50%">
           <mat-label>Password</mat-label>
           <input matInput #pwd>
         </mat-form-field>
-      </p>   
+      </div>
+
+      <div fxFlex="10%" fxFlexAlign="center" class="text-align-right">
+        <button mat-raised-button type='submit' color="primary">submit</button>
+      </div>
+
     </div>
 
-    <div fxFlex="10%" fxFlexAlign="center" dir="rtl">
-      <button mat-raised-button type='submit' color="primary">submit</button>
-    </div>
-
-  </div>
-</form>
-
+  </form>
+</div>
