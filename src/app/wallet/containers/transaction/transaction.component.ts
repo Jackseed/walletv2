@@ -17,12 +17,12 @@ export class TransactionComponent implements OnInit {
   ngOnInit() {
   }
 
-  public sendTransaction(to: string, amount: string, gaslimit: string,gasfee: string) {
+  public sendTransaction(to: string, amount: string, gaslimit: number, gasfee: string) {
 
    const tx: ethers.providers.TransactionRequest = {
       to: to,
       value: ethers.utils.parseEther(amount),
-      gasLimit: gaslimit,
+      gasLimit: ethers.utils.bigNumberify(gaslimit),
       gasPrice: ethers.utils.parseEther(gasfee)
     };
     this.service.signTransaction(tx);
