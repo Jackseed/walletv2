@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>SECURITY CHECK</h1>
+<div mat-dialog-content>
+  <p>This is the last time we show you those words, will you remind it?</p>
+  <p>{{ mnemonic$ || async }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button >Ok</button>
+</div>

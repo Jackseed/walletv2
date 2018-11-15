@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { WalletQuery } from '../../+state';
 import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
+import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
-
+export interface DialogData {
+  mnemonic$: Observable<string[]>;
+}
 @Component({
   selector: 'app-mnemonic',
   templateUrl: './mnemonic.component.html',
@@ -16,10 +20,13 @@ export class MnemonicComponent implements OnInit {
   public mnemonicsChosen: boolean;
   public editable: boolean;
   public walletCreated: boolean;
+  public formFinished: boolean;
 
   constructor(
     private query: WalletQuery,
-    private service: WalletService
+    private service: WalletService,
+    public router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -29,6 +36,7 @@ export class MnemonicComponent implements OnInit {
     this.mnemonicsChosen = false;
     this.editable = true;
     this.walletCreated = false;
+    this.formFinished = false;
   }
   public generateRandomMnemonic() {
     return this.service.generateRandomMnemonic();
@@ -46,6 +54,31 @@ export class MnemonicComponent implements OnInit {
 
   public generateKeystore(password: string) {
     this.service.generateKeystore(password);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MnemonicDialogComponent, {
+      height: '400px',
+      width: '600px',
+      data: {mnemonic$: this.mnemonic$}
+    });
+  }
+
+}
+
+
+@Component({
+  selector: 'app-mnmemonic-dialog',
+  templateUrl: 'app-mnemonic-dialog.html',
+})
+export class MnemonicDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<MnemonicDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

@@ -7,6 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MnemonicDialog } from '../wallet/containers/mnemonic/mnemonic.component';
 
 
 
@@ -21,7 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatCardModule,
     MatStepperModule,
-    MatIconModule],
+    MatIconModule,
+    MatDialogModule],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -30,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     FlexLayoutModule,
     MatCardModule,
     MatStepperModule,
-    MatIconModule],
+    MatIconModule,
+    MatDialogModule],
 })
 export class UiModule { }
