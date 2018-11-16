@@ -4,15 +4,36 @@ import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 export interface DialogData {
-  mnemonic$: Observable<string[]>;
+  mnemonic: string;
 }
 @Component({
   selector: 'app-mnemonic',
   templateUrl: './mnemonic.component.html',
-  styleUrls: ['./mnemonic.component.css']
+  styleUrls: ['./mnemonic.component.css'],
+  animations: [
+    trigger('blackRed', [
+      // ...
+      state('black', style({
+      })),
+      state('red', style({
+        backgroundColor: 'red'
+      })),
+      transition('black => red', [
+        animate('1s 1.5s ease-in')
+      ])
+    ])
+  ]
 })
+
 export class MnemonicComponent implements OnInit {
 
   public mnemonic$: Observable<string[]>;
@@ -21,6 +42,8 @@ export class MnemonicComponent implements OnInit {
   public editable: boolean;
   public walletCreated: boolean;
   public formFinished: boolean;
+  public isCompleted: boolean;
+
 
   constructor(
     private query: WalletQuery,
@@ -37,6 +60,7 @@ export class MnemonicComponent implements OnInit {
     this.editable = true;
     this.walletCreated = false;
     this.formFinished = false;
+    this.isCompleted = false;
   }
   public generateRandomMnemonic() {
     return this.service.generateRandomMnemonic();
@@ -58,9 +82,15 @@ export class MnemonicComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(MnemonicDialogComponent, {
-      height: '400px',
-      width: '600px',
-      data: {mnemonic$: this.mnemonic$}
+      data: {
+        mnemonic: this.query.mnemonic
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.isCompleted = true;
+      }
     });
   }
 
@@ -80,5 +110,4 @@ export class MnemonicDialogComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

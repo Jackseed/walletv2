@@ -8,8 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MnemonicDialog } from '../wallet/containers/mnemonic/mnemonic.component';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +24,9 @@ import { MnemonicDialog } from '../wallet/containers/mnemonic/mnemonic.component
     MatCardModule,
     MatStepperModule,
     MatIconModule,
-    MatDialogModule],
+    MatDialogModule,
+    BrowserModule,
+    BrowserAnimationsModule],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -34,6 +36,8 @@ import { MnemonicDialog } from '../wallet/containers/mnemonic/mnemonic.component
     MatCardModule,
     MatStepperModule,
     MatIconModule,
-    MatDialogModule],
+    MatDialogModule,
+    BrowserModule,
+    BrowserAnimationsModule],
 })
 export class UiModule { }

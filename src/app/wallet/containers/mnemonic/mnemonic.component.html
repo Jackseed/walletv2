@@ -6,19 +6,21 @@
 </div>
 
 <div [hidden]="formFinished">
-  <mat-vertical-stepper linear>
-    <mat-step [editable]="editable">
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step [editable]="editable" [completed]="isCompleted">
         <ng-template matStepLabel>Choose your mnemonics</ng-template>
         <div fxLayout="column" fxLayoutAlign="center">
-          <div fxFlex fxFlexAlign="center">    
-            <span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>
+          <div fxFlex fxFlexAlign="center">
+            <span *ngFor="let mnemonic of (mnemonic$ | async)">{{mnemonic}}</span>  
           </div>
           <div fxFlex fxFlexAlign="center" class="mini-padding-top">  
             <br><button mat-raised-button color="accent" (click)="updateMnemonic()">Random</button>
           </div>
           <div fxFlex fxFlexAlign="center" class="mini-padding-top" [hidden]="!mnemonicsChosen">  
             <mat-card  class="text-align-center">
-              <mat-card-title>WARNING!</mat-card-title>   
+              <div [@blackRed]="mnemonicsChosen ? 'red' : 'black'">
+                <mat-card-title>WARNING!</mat-card-title>
+              </div>
               <mat-card-content>
                 Write down those words somewhere safe.
                 <br>We will not be able to provide it to you again as we do not save a copy for your safety.
@@ -27,7 +29,7 @@
           </div>
         </div>
         <div class="text-align-right">
-            <button mat-icon-button color="primary" [disabled]="!mnemonicsChosen" (click)="openDialog()" matStepperNext>
+            <button mat-icon-button color="primary" [disabled]="!mnemonicsChosen" (click)="openDialog()">
                 <mat-icon aria-label="save">save</mat-icon>
             </button>
         </div>
