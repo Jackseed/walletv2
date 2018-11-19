@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -26,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatDialogModule,
     BrowserModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    MatDividerModule],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -38,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatDialogModule,
     BrowserModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    MatDividerModule],
 })
 export class UiModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WalletQuery, WalletService } from '../../+state';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet',
@@ -14,7 +15,8 @@ export class WalletComponent implements OnInit {
 
   constructor(
     private query: WalletQuery,
-    private service: WalletService
+    private service: WalletService,
+    public router: Router
   ) { }
 
   ngOnInit() {

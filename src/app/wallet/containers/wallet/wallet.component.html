@@ -1,10 +1,27 @@
-<p>
-  wallet section:
-</p>
-<p>You are connected to this address: {{ address$ | async }}</p> 
+<div class="text-align-center">
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex= "100%">    
+        <h2 class="mini-padding-top">Wallet</h2>
+        <p>Home sweet home</p>
+    </div>
+  </div>
 
-<p>Your balance is: {{ balance$ | async }}</p> 
+  <div class="mini-padding-top">
+    <h3>Your address is:</h3> 
+    <br><p>{{ address$ | async }}</p>
+  </div>
+  <div class="mini-padding-top">
+    <h3>Your balance is:</h3> 
+    <br><p>{{ balance$ | async }}</p>
+  </div>
+</div>
 
-<button mat-raised-button color="primary" (click)="updateBalance()">refresh</button>
-
-<app-transaction></app-transaction>
+<div class="mini-padding-top" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10%">
+    <div fxFlex="45%" dir="rtl">
+      <button mat-raised-button color="primary" (click)="updateBalance()">refresh</button>
+    </div>
+    <div fxFlex="45%" dir="ltr">
+      <button mat-raised-button color="accent" (click)="this.router.navigate(['/transaction'])">transfer</button>
+    </div>
+ 
+</div>

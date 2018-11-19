@@ -43,3 +43,22 @@ a:active {
     color: black;
 }
 
+.mini-padding-top {
+  padding-top: 1em;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.direction-right {
+  direction: rtl;
+}

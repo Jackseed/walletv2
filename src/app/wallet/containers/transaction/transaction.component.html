@@ -1,6 +1,12 @@
-<p>
-  transaction section
-</p>
+<div class="text-align-center">
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex= "100%">    
+        <h2 class="mini-padding-top">Transaction</h2>
+        <p>Try to save a bit</p>
+    </div>
+  </div>
+</div>
+
 <form (ngSubmit)='sendTransaction(recipientAddress.value, amount.value, gaslimit.value, gasFee.value)'>
 
   <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
