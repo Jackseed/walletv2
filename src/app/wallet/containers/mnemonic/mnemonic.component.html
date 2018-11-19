@@ -7,7 +7,7 @@
 
 <div [hidden]="formFinished">
   <mat-vertical-stepper [linear]="true" #stepper>
-    <mat-step [editable]="editable" [completed]="isCompleted">
+    <mat-step [editable]="isEditableStep1" [completed]="isCompleted">
         <ng-template matStepLabel>Choose your mnemonics</ng-template>
         <div fxLayout="column" fxLayoutAlign="center">
           <div fxFlex fxFlexAlign="center">
@@ -30,7 +30,7 @@
         </div>
         <div class="text-align-right">
             <button mat-icon-button color="primary" [disabled]="!mnemonicsChosen" (click)="openDialog()">
-                <mat-icon aria-label="save">save</mat-icon>
+                <mat-icon aria-label="next">navigate_next</mat-icon>
             </button>
         </div>
     </mat-step>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="text-align-right">
-            <button mat-icon-button color="primary" [disabled]="!walletCreated" (click)="editable=!editable" matStepperNext>
+            <button mat-icon-button color="primary" [disabled]="!walletCreated" (click)="isEditableStep2=!isEditableStep2" matStepperNext>
                 <mat-icon aria-label="save">save</mat-icon>
             </button>
         </div>

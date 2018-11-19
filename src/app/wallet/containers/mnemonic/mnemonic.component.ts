@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { WalletQuery } from '../../+state';
 import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatStepper } from '@angular/material';
 import {
   trigger,
   state,
@@ -34,12 +35,16 @@ export interface DialogData {
   ]
 })
 
+
 export class MnemonicComponent implements OnInit {
+
+  @ViewChild('stepper') stepper: MatStepper;
 
   public mnemonic$: Observable<string[]>;
   public address$: Observable<string>;
   public mnemonicsChosen: boolean;
-  public editable: boolean;
+  public isEditableStep1: boolean;
+  public isEditableStep2: boolean;
   public walletCreated: boolean;
   public formFinished: boolean;
   public isCompleted: boolean;
@@ -57,7 +62,8 @@ export class MnemonicComponent implements OnInit {
     this.address$ = this.query.address$;
     this.service.pushLocalKeystoreToStore();
     this.mnemonicsChosen = false;
-    this.editable = true;
+    this.isEditableStep1 = true;
+    this.isEditableStep2 = true;
     this.walletCreated = false;
     this.formFinished = false;
     this.isCompleted = false;
@@ -90,10 +96,11 @@ export class MnemonicComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.isCompleted = true;
+        this.isEditableStep1 = false;
+        this.stepper.selectedIndex = 1 ;
       }
     });
   }
-
 }
 
 

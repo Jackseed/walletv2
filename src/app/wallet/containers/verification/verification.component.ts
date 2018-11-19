@@ -46,10 +46,8 @@ export class VerificationComponent implements OnInit {
     if (this.query.mnemonic !== '') {
       const mnemonics = this.query.mnemonic.split(' ');
       if (mnemonic1 === mnemonics[this.mnemonicIDs[0] - 1]) {
-        if (mnemonic2 === mnemonics[this.mnemonicIDs[1] - 1]) {
-          if (mnemonic3 === mnemonics[this.mnemonicIDs[2] - 1]) {
-            this.router.navigate(['/wallet']);
-          }
+        if (mnemonic3 === mnemonics[this.mnemonicIDs[2] - 1]) {
+          this.router.navigate(['/wallet']);
         }
       } else {
         console.log('One or more of your mnemonics is false.');
