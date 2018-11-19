@@ -7,58 +7,86 @@
   </div>
 </div>
 
-<form (ngSubmit)='sendTransaction(recipientAddress.value, amount.value, gaslimit.value, gasFee.value)'>
+<div class="mini-padding-top">
+  <form (ngSubmit)='sendTransaction(recipientAddress.value, amount.value, gaslimit.value, gasFee.value)'>
 
-  <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap fxLayoutGap="2%">
-
-    <div fxFlex>
-        <h3>From: {{ address$ | async }}</h3>
-    </div>       
-
-    <div fxFlex>
-      <h3>To:</h3>          
-      <p>
-        <mat-form-field appearance="fill" style="width:100%">
-            <mat-label>Recipient Address</mat-label>           
-            <input matInput #recipientAddress>
-        </mat-form-field>
-      </p>
-    </div> 
+    <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="2%">
+      
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex.gt-sm="40%" fxFlex="90%">
+          <div fxFlex=30%>
+            <h3>From:</h3>
+          </div>
+          <div fxFlex>
+            <h3>{{ address$ | async }}</h3>
+          </div>            
+        </div>    
+      </div>
     
-    <div fxFlex>
-        <h3>Amount:</h3>          
-        <p>
-          <mat-form-field appearance="fill" style="width:100%">
-              <mat-label>ETH</mat-label>           
-              <input matInput #amount>
-          </mat-form-field>
-        </p>
-    </div> 
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex.gt-sm="40%" fxFlex="90%">
+          <div fxFlex=30%>
+            <h3>To:</h3>
+          </div>
+          <div fxFlex>
+            <mat-form-field appearance="fill" style="width:100%">
+                <mat-label>Recipient Address</mat-label>           
+                <input matInput #recipientAddress>
+            </mat-form-field>
+          </div>            
+        </div>    
+      </div>
 
-    <div fxFlex>
-      <h3>Gas limit:</h3>          
-      <p>
-        <mat-form-field appearance="fill" style="width:100%">
-            <mat-label></mat-label>           
-            <input matInput #gaslimit>
-        </mat-form-field>
-      </p>
-  </div>   
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex.gt-sm="40%" fxFlex="90%">
+          <div fxFlex=30%>
+            <h3>Amount:</h3>
+          </div>
+          <div fxFlex>
+            <mat-form-field appearance="fill" style="width:100%">
+                <mat-label>ETH</mat-label>           
+                <input matInput #amount>
+            </mat-form-field>
+          </div>            
+        </div>    
+      </div>
 
-    <div fxFlex>
-        <h3>Gas Fee:</h3>          
-        <p>
-          <mat-form-field appearance="fill" style="width:100%">
-              <mat-label>ETH</mat-label>           
-              <input type='number' matInput #gasFee>
-          </mat-form-field>
-        </p>
-    </div>  
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex.gt-sm="40%" fxFlex="90%">
+          <div fxFlex=30%>
+            <h3>Gas limit:</h3>
+          </div>
+          <div fxFlex>
+              <mat-form-field appearance="fill" style="width:100%">
+                  <mat-label></mat-label>           
+                  <input matInput #gaslimit>
+              </mat-form-field>
+          </div>            
+        </div>    
+      </div>
 
-    <div fxFlex>
-       <button mat-raised-button type='submit' color="primary">Send</button>
-    </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex.gt-sm="40%" fxFlex="90%">
+          <div fxFlex=30%>
+            <h3>Gas Fee:</h3>
+          </div>
+          <div fxFlex>
+              <mat-form-field appearance="fill" style="width:100%">
+                  <mat-label>ETH</mat-label>           
+                  <input type='number' matInput #gasFee>
+              </mat-form-field>
+          </div>            
+        </div>    
+      </div>
 
-  </div>   
 
-</form>
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <div fxFlex="40%" dir="rtl">
+          <button mat-raised-button type='submit' color="accent">Send</button>
+        </div>
+      </div>
+
+    </div>   
+
+  </form>
+</div>
