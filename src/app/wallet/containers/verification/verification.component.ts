@@ -3,6 +3,7 @@ import { WalletQuery } from '../../+state';
 import { Observable } from 'rxjs';
 import { WalletService } from '../../+state';
 import { Router } from '@angular/router';
+import {ObservableMedia} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-verification',
@@ -17,7 +18,8 @@ export class VerificationComponent implements OnInit {
   constructor(
     private query: WalletQuery,
     private service: WalletService,
-    private router: Router
+    private router: Router,
+    public media: ObservableMedia
   ) { }
 
   ngOnInit() {
