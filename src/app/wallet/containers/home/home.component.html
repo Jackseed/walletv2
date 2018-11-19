@@ -6,9 +6,9 @@
     </div>
   </div>
   
-  <div fxLayout.gt-sm="row" fxLayout="column" class="extra-padding-top">
-      
-      <div fxFlex.gt-sm= "20%" fxFlex="100%" fxFlexOffset.gt-sm="20%" fxFlexOffset="0%">
+  <div fxLayout="row" fxLayout.xs="column" class="extra-padding-top">
+      <div fxShow.xs="false" fxShow="true" fxFlex="20%"></div>
+      <div fxFlex= "20%" fxFlex.xs="100%">
         <a routerLink="/mnemonic">
           <mat-card class="card">            
             <mat-card-title>CREATE</mat-card-title>
@@ -17,7 +17,8 @@
         </a>
       </div>
 
-      <div fxFlex.gt-sm= "20" fxFlex="100%" fxFlexOffset.gt-sm="20%" fxFlexOffset="0%">
+      <div fxShow.xs="false" fxShow="true" fxFlex="20%"></div>
+      <div fxFlex= "20%" fxFlex.xs="100%">
         <a routerLink="/verification">
           <mat-card class="card">            
             <mat-card-title>CONNECT</mat-card-title>
